@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/rachella/Documents/DCGD/build/Debug",
+  "command": "/usr/bin/c++      -o CMakeFiles/Main.dir/main.cpp.o -c /home/rachella/Documents/DCGD/main.cpp",
+  "file": "/home/rachella/Documents/DCGD/main.cpp"
+},
+{
+  "directory": "/home/rachella/Documents/DCGD/build/Debug",
+  "command": "/usr/bin/c++      -o CMakeFiles/Main.dir/include/ground_search.cpp.o -c /home/rachella/Documents/DCGD/include/ground_search.cpp",
+  "file": "/home/rachella/Documents/DCGD/include/ground_search.cpp"
+}
+]

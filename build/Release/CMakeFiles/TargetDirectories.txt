@@ -1,0 +1,5 @@
+/home/rachella/Documents/DCGD/build/Release/CMakeFiles/rebuild_cache.dir
+/home/rachella/Documents/DCGD/build/Release/CMakeFiles/edit_cache.dir
+/home/rachella/Documents/DCGD/build/Release/CMakeFiles/Main.dir
+/home/rachella/Documents/DCGD/build/Release/CMakeFiles/package_source.dir
+/home/rachella/Documents/DCGD/build/Release/CMakeFiles/package.dir
