@@ -274,6 +274,9 @@ CPACK_SOURCE_TZ:BOOL=ON
 //Enable to build ZIP source packages
 CPACK_SOURCE_ZIP:BOOL=OFF
 
+//The directory containing a CMake configuration file for Eigen3.
+Eigen3_DIR:PATH=/usr/lib/cmake/eigen3
+
 //Value Computed by CMake
 Ground_Detection_BINARY_DIR:STATIC=/home/rachella/Documents/DCGD/build/Release
 
@@ -329,8 +332,6 @@ BLAS_acml_LIBRARY-ADVANCED:INTERNAL=1
 BLAS_acml_mp_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: BLAS_blas_LIBRARY
 BLAS_blas_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: BLAS_blas_WORKS
-BLAS_blas_WORKS-ADVANCED:INTERNAL=1
 //Have function sgemm_
 BLAS_blas_WORKS:INTERNAL=1
 //ADVANCED property for variable: BLAS_complib.sgimath_LIBRARY
@@ -540,8 +541,6 @@ LAPACK_Accelerate_LIBRARY-ADVANCED:INTERNAL=1
 LAPACK_goto2_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: LAPACK_lapack_LIBRARY
 LAPACK_lapack_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: LAPACK_lapack_WORKS
-LAPACK_lapack_WORKS-ADVANCED:INTERNAL=1
 //Have function cheev_
 LAPACK_lapack_WORKS:INTERNAL=1
 //ADVANCED property for variable: LAPACK_openblas_LIBRARY

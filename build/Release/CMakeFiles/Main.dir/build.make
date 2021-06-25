@@ -116,9 +116,6 @@ Main_EXTERNAL_OBJECTS =
 Main: CMakeFiles/Main.dir/main.cpp.o
 Main: CMakeFiles/Main.dir/include/ground_search.cpp.o
 Main: CMakeFiles/Main.dir/build.make
-Main: /usr/lib/x86_64-linux-gnu/libblas.so
-Main: /usr/lib/x86_64-linux-gnu/liblapack.so
-Main: /usr/lib/x86_64-linux-gnu/libblas.so
 Main: /usr/lib/x86_64-linux-gnu/libopencv_shape.so.3.2.0
 Main: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.3.2.0
 Main: /usr/lib/x86_64-linux-gnu/libopencv_superres.so.3.2.0
@@ -145,7 +142,6 @@ Main: /usr/lib/x86_64-linux-gnu/libopencv_text.so.3.2.0
 Main: /usr/lib/x86_64-linux-gnu/libopencv_ximgproc.so.3.2.0
 Main: /usr/lib/x86_64-linux-gnu/libopencv_xobjdetect.so.3.2.0
 Main: /usr/lib/x86_64-linux-gnu/libopencv_xphoto.so.3.2.0
-Main: /usr/lib/x86_64-linux-gnu/liblapack.so
 Main: /usr/lib/x86_64-linux-gnu/libopencv_video.so.3.2.0
 Main: /usr/lib/x86_64-linux-gnu/libopencv_viz.so.3.2.0
 Main: /usr/lib/x86_64-linux-gnu/libopencv_phase_unwrapping.so.3.2.0
