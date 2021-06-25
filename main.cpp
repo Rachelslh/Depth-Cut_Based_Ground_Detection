@@ -12,7 +12,7 @@ using namespace cv;
 
 int main() {
 
-  Camera *camera = new Camera(0, 5.8269e+02, 0, 2.3844e+02); // Those are Kinect V2 intrinsics
+  Camera *camera = new Camera(0, 5.8269e+02, 0, 2.3844e+02); // Those are Kinect V1 intrinsics, because frames from data folder are from Kinect v1.
   DCGD *dcgd = new DCGD(camera, 800, 4000, 20, 3, 15, true);
 
   Mat img = imread("data/depth/depth.png",-1);
