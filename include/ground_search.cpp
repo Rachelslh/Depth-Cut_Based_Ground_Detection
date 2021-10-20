@@ -267,6 +267,7 @@ std::vector<DCGD::PointT> DCGD::get_all_floor_points( std::map<int, std::vector<
   for ( int i = 0; i < height; i++ ) {
     for ( int j = 0; j < width; j++ ) {
 
+      ground_indices[i * width + j] = false;
       const auto &d = depthMap(i, j);
 
       if ( d >= mini && d <= maxi ) {
@@ -279,11 +280,12 @@ std::vector<DCGD::PointT> DCGD::get_all_floor_points( std::map<int, std::vector<
               if ( abs(yReal - pt.yReal) <= (height_err * 2) ) {
                 curr_pt = {j, i, yReal};
                 ground.push_back(curr_pt);
+                ground_indices[i * width + j] = true;
                 // Visualize
                 if (visualize) {
-                  rgbImg.at<Vec3b>(i, j)[0] = 255;
-                  rgbImg.at<Vec3b>(i, j)[1] = 255;
-                  rgbImg.at<Vec3b>(i, j)[2] = 0;
+                  rgbImg.at<cv::Vec4b>(i, j)[0] = 255;
+                  rgbImg.at<cv::Vec4b>(i, j)[1] = 255;
+                  rgbImg.at<cv::Vec4b>(i, j)[2] = 0;
                 }
                 break;
               }
@@ -298,13 +300,25 @@ std::vector<DCGD::PointT> DCGD::get_all_floor_points( std::map<int, std::vector<
 }
 
 
-std::map<int, std::vector<DCGD::PointT>> DCGD::dcgd_process_donsampling() {
+std::vector<DCGD::PointT> DCGD::run(cv::Mat mDepth) {
 
   Array<PointT, Dynamic, Dynamic, RowMajor> cuts;
   std::map<int, std::vector<std::vector<PointT>>> subcuts, all_filtered, all_labeled;
   std::map<int, std::vector<PointT>> floorPoints;
+  std::vector<DCGD::PointT> ground_points;
+  Eigen::MatrixXd depthM;
+
+  cv::Mat img_32FC1;
 
   time_t start, end;
+
+  mDepth.convertTo(img_32FC1, CV_32FC1);
+
+  // Apply median filter on depth map
+  medianBlur(img_32FC1, img_32FC1, 5);
+  
+  cv2eigen(img_32FC1, depthM);
+  set_depth_map(depthM);
 
   time(&start);
 
@@ -324,9 +338,12 @@ std::map<int, std::vector<DCGD::PointT>> DCGD::dcgd_process_donsampling() {
   find_all_concave_points(all_filtered, floorPoints);
   std::cout << "[Info] All filtered subcuts labeled" << '\n';
 
+  std::cout << "[DCGD] Found : " << floorPoints.size() << " minimal points." << '\n';
+  ground_points = get_all_floor_points(floorPoints);
+  std::cout << "[DCGD] Found : " << ground_points.size() << " points." << '\n';
+
   time(&end);
   std::cout << "[Execution] Consumed time : " << '\n' << difftime(end,start) << '\n';
 
-  return floorPoints;
-
+  return ground_points;
 }
