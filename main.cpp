@@ -27,7 +27,7 @@ int main() {
 
   // Apply median filter on depth map
   medianBlur(img_32FC1, img_32FC1, 3);
-  //xarray<float> depthMap = adapt((float*)img_32FC1.data, size * channels, no_ownership(), shape);
+  
   Eigen::MatrixXd depthMap;
   cv2eigen(img_32FC1, depthMap);
   //std::cout << depthMap << '\n';
@@ -37,10 +37,7 @@ int main() {
 
   dcgd->set_depth_map(depthMap.array());
   dcgd->set_rgb_image(rgbImg);
-  minimal_ground = dcgd->dcgd_process_donsampling();
-  std::cout << "[DCGD] Found : " << minimal_ground.size() << " minimal points." << '\n';
-  ground = dcgd->get_all_floor_points(minimal_ground);
-  std::cout << "[DCGD] Found : " << ground.size() << " points." << '\n';
+  dcgd->run();
 
   namedWindow( "windowName_", CV_WINDOW_AUTOSIZE);
   imshow( "windowName_", rgbImg); // Show the image.
