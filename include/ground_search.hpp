@@ -7,11 +7,11 @@
 #include <Eigen/Dense>
 // OPENCV
 #include <opencv2/opencv.hpp>
+#include <opencv2/core/eigen.hpp>
 // Internal Libraries
 #include "camera.hpp"
 
 using namespace Eigen;
-using namespace cv;
 
 namespace Ground_Detection{
 
@@ -21,6 +21,8 @@ namespace Ground_Detection{
 
     ArrayXXd depthMap;
     ArrayXXd arr_yReal;
+
+    std::map<int, bool> ground_indices;
 
     cv::Mat rgbImg;
 
@@ -39,6 +41,10 @@ namespace Ground_Detection{
 
     DCGD( Camera *_camera, double _mini, double _maxi, double _height_err,
           double _size_err, int _step, bool _visualize);
+
+    std::map<int, bool> get_ground_indices() {
+      return ground_indices;
+    }
 
     void set_depth_map( ArrayXXd _depthMap ) {
       depthMap = _depthMap;
@@ -71,7 +77,7 @@ namespace Ground_Detection{
 
     std::vector<PointT> get_all_floor_points( std::map<int, std::vector<PointT>> floorPoints );
 
-    std::map<int, std::vector<PointT>> dcgd_process_donsampling( );
+    std::vector<DCGD::PointT> run(cv::Mat mDepth);
 
   };
 }
