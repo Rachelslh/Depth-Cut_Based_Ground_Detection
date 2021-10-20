@@ -1,3 +1,7 @@
+#ifndef CAMERA_HPP
+#define CAMERA_HPP
+
+
 namespace Ground_Detection {
 
   class Camera {
@@ -35,5 +39,9 @@ namespace Ground_Detection {
       return cy;
     }
 
+  };
+}
+
+#endif
   };
 }
